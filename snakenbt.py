@@ -457,6 +457,10 @@ def _decode(
 
 
 def _guess_target_tag_id(data: collections.abc.Sequence[Any], deep: bool = True) -> tuple[int, int]:
+    if isinstance(data, bytes):
+        # TAG_Byte_Array
+        return TagByteArray.tag_id, 0
+
     last = None
     target_list_type = 0
     bitsize = 0
