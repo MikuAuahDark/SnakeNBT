@@ -1,0 +1,24 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [
+  {name = "Miku AuahDark", email = "lumi.hotaru@gmail.com"},
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "License :: OSI Approved :: zlib/libpng License",
+  "Operating System :: OS Independent",
+  "Development Status :: 4 - Beta",
+]
+description = "Yet another NBT parser in Python"
+name = "snakenbt"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.1.0"
+
+[project.urls]
+"Bug Tracker" = "https://github.com/MikuAuahDark/SnakeNBT/issues"
+"Homepage" = "https://github.com/MikuAuahDark/SnakeNBT"
