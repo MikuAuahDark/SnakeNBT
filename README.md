@@ -3,6 +3,8 @@
 
 Yet another NBT encoder/decoder written in Python.
 
+It's single file for easiest integration in your existing project too.
+
 Why?
 -----
 
