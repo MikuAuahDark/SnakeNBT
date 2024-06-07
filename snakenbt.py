@@ -173,7 +173,7 @@ class _TagListInts(_TagListPrimitive[int]):
 
     def __init__(self, value: collections.abc.Iterable[int] | None = None, name: str | None = None):
         super().__init__(
-            int, None if value is None else (_fix_integer_value(v, self._integer_size) for v in value), name
+            int, None if value is None else (_fix_integer_value(int(v), self._integer_size) for v in value), name
         )
 
 
@@ -607,6 +607,17 @@ def _encode_value_primitive(
                 tag_id = TagLong.tag_id
             else:
                 raise ValueError(f"integer '{value}' too large to be encoded")
+        else:
+            if intsize > 8:
+                raise ValueError(f"intsize '{intsize}' too large")
+            elif intsize > 4:
+                tag_id = TagLong.tag_id
+            elif intsize > 2:
+                tag_id = TagInt.tag_id
+            elif intsize > 1:
+                tag_id = TagShort.tag_id
+            else:
+                tag_id = TagByte.tag_id
         if write_tag_id:
             fp.write(tag_id.to_bytes(1, "big"))
         if name is not None:
